@@ -1,0 +1,161 @@
+* {
+	padding: 0;
+	margin: 0;
+
+	&:not(.selectable) {
+		user-select: none;
+		-webkit-user-select: none;
+	}
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;	
+}
+
+
+@skin-color: #F5DBC1;
+@eyelid-color: #EFC79F;
+@beard-color: #989088;
+@eye-iris-color: #A4BE28;
+@eye-pupil-color: #000;
+
+@eye-size: 200px;
+.head {
+	position: fixed;
+	top: 0; bottom: 0; 
+	left: 0; right: 0;
+
+	.face-part {
+		position: absolute;
+		left: 0; right: 0;
+
+		&.top-part {
+			top: 0; bottom: 60%;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+			background-color: @skin-color;
+		}
+		&.bottom-part {
+			top: 40%; bottom: 0;
+
+			background-color: @beard-color;
+		}
+	}
+
+	.eye {
+		position: absolute;
+		bottom: -@eye-size/2;
+		left: 50%;
+
+		width: @eye-size;
+		height: @eye-size;
+		
+		margin-left: -@eye-size/2;
+		
+		border-radius: @eye-size;
+
+		background-color: #FFF;
+
+		z-index: 1;
+
+		overflow: hidden;
+
+		.eyelid {
+		  position: absolute;
+		  top: 0; bottom: 90%;
+		  left: 0; right: 0;
+
+		  &.closed {
+		  	bottom: 0;
+		  }
+		  &.half-closed {
+		  	bottom: 50%;
+		  }
+
+		  background-color: @eyelid-color;
+
+		  z-index: 2;
+
+		  transition: bottom 0.3s 0.1s ease;
+		  -webkit-transition: bottom 0.3s 0.1s ease;
+		  -moz-transition: bottom 0.3s 0.1s ease;
+		}
+
+		@eye-iris-size: @eye-size/2;
+		.iris {
+			position: absolute;
+			top: 50%; left: 50%;
+
+			width: @eye-iris-size;
+			height: @eye-iris-size;
+			
+			margin: -@eye-iris-size/2;
+			
+			border-radius: @eye-iris-size;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+
+			background-color: @eye-iris-color;
+		}
+
+		@eye-pupil-size: @eye-iris-size*0.5;
+		.pupil {
+			position: absolute;
+			top: 50%; left: 50%;
+
+			width: @eye-pupil-size;
+			height: @eye-pupil-size;
+			
+			margin: -@eye-pupil-size/2;
+			
+			border-radius: @eye-pupil-size;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+
+			background-color: @eye-pupil-color;
+
+			@hotspot-size: @eye-pupil-size*0.2;
+			&:before {
+			  content: " ";
+			  position: absolute;
+			  top: @hotspot-size*0.8;
+			  right: @hotspot-size*0.7;
+			  width: @hotspot-size;
+			  height: @hotspot-size;
+			  border-radius: @hotspot-size;
+			  background-color: rgba(255, 255, 255, 0.8);
+			}
+			@hotspot-size: @eye-pupil-size*0.2;
+			&:after {
+			  content: " ";
+			  position: absolute;
+			  top: @hotspot-size*0.8;
+			  right: @hotspot-size*0.7;
+			  width: @hotspot-size;
+			  height: @hotspot-size;
+			  border-radius: @hotspot-size;
+			  background-color: rgba(255, 255, 255, 0.8);
+			}
+		}
+	}
+
+	@mouth-width: 50px;
+	@mouth-height: 2px;
+	.mouth {
+		position: absolute;
+		bottom: 10%;
+		left: 50%;
+
+		width: @mouth-width;
+		height: @mouth-height;
+		
+		margin-left: @mouth-width;
+		border-radius: @mouth-height;
+
+		background-color: #000;
+
+		z-index: 1;
+
+		overflow: hidden;
+	}
+}

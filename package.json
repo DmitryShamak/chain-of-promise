@@ -1,0 +1,13 @@
+{
+  "name": "Dmitry",
+  "version": "0.0.1",
+  "description": "Chain List",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "express": "^4.12.3"
+  },
+  "devDependencies": {},
+  "author": "Dmitry",
+  "license": "BSD-2-Clause"
+}
